@@ -3,22 +3,17 @@
 <div class="container">
     <div class="row">
         <div class="col1">
-            <h1>Добавить продукт</h1>
-            <br>
-            <form>
-                <div class="mb-3">
-                  <label  class="form-label">Название продукта</label>
-                  <input type="text" class="form-control" name="name">>
-                <div class="mb-3">
-                  <label  class="form-label">Фотография</label>
-                  <input type="file" class="form-control"name="image">
-                </div>
-                <label  class="form-label">Цена</label>
-                <input type="text" class="form-control" name="price">
-                <label  class="form-label">Oпиание</label>
-                <br>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-              </form>
+            <h1 style="text-align: center;">Продукты</h1>
+            {% for product in products %}
+            <p style="text-align: center;">{{product.name}}</p>
+            <p style="text-align: center;">{{product.price}}</p>
+            {% if product.image %}
+            <p style="text-align: center;"><img src="{{ product.image.url }}" height="200px" width="200px"></p>
+            {% else %}
+            {% endif %}
+            <p style="text-align: center;">{{product.description}}</p>
+            <p style="text-align: center;">{{product.quantity}}</p>
+            {% endfor %}
            
         </div>
     </div>

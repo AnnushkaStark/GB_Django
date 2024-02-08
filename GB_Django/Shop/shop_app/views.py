@@ -14,6 +14,12 @@ class IndexPageView(TemplateView):
     template_name = 'index.html'
 
 
+class AddNewProductView(TemplateView):
+    """
+    Представление  страницы
+    c формой добавления продукта
+    """
+    template_name = 'new_product.html'
     
 
 class AllOrdersView(ListView):
@@ -38,7 +44,7 @@ class AllOrdersView(ListView):
 class AllProductsInOrdersView(ListView):
     """
     Список продуктов в заказах за неделю 
-    месяц и год
+    месяц и год 
     """
     def get(self,request):
        user = Client.objects.get(name = "Vasya")
@@ -49,5 +55,36 @@ class AllProductsInOrdersView(ListView):
        return render(request, 'order_products.html', {'orders_week': orders_week, 'orders_month': orders_month, 'orders_year': orders_year})
     
     
+class AddNewProductFormView(FormView):
+    """
+    Представление формы добавления продукта
+    """
 
+    def post(self,request,*args,**kwargs):
+        """
+        Получение данных из формы
+        """
+        form = AddProductForm(request.POST,request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.save()
+            messages.success(request,"Продукт сохранен")
+            return redirect("add_product")
+        messages.error(request,"Ошибка заполения формы")
+        return redirect("add_product")
+
+
+
+class AllProductsView(ListView):
+    """
+    Страница отображения всех 
+    всех продуктов (с картинками)
+    чтоб было видно что все сохранилось нормально
+    """
+    def get(self,request, *args, **kwargs):
+
+        products = Product.objects.all().order_by("-id",)
+
+        return render(request, 'all_products.html',{"products":products})
+        
 

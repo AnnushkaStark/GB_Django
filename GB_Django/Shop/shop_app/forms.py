@@ -3,7 +3,7 @@ from django import forms
 from .models import Product
 
 
-class AddProductForm(forms.Form):
+class AddProductForm(forms.ModelForm):
     """
     Форма сохранения нового продукта
     """
@@ -25,4 +25,7 @@ class AddProductForm(forms.Form):
             return cleaned_data
         raise forms.ValidationError("Неверное заполение формы")
     
+    class Meta:
+        model= Product
+        fields= ["name","description","price", "image","quantity"]
    

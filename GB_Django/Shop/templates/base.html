@@ -22,9 +22,10 @@
     <div class="container">
         <div class="row">
             <div class="col12">   
-                                <p style="text-align: center;"> <a  style="margin-left: 10px;margin-right: 10px;" class="text-center text-red"href="#">Home</a>
+                                <p style="text-align: center;"> <a  style="margin-left: 10px;margin-right: 10px;" class="text-center text-red"href="{% url 'index'%}">Гланая</a>
                                  <a  style="margin-left: 10px;margin-right: 10px;"   class="text-center text-red"href="{% url 'all_orders_products'%}">Список продуктов в заказах</a>
-                                 <a   style="margin-left: 10px;margin-right: 10px;"  class="text-center text-red"href="#">Add_new_products</a>
+                                 <a   style="margin-left: 10px;margin-right: 10px;"  class="text-center text-red"href="{% url 'add_product'%}">Добавить продукт</a>
+                                 <a   style="margin-left: 10px;margin-right: 10px;"  class="text-center text-red"href="{% url 'all_products'%}">Все продукты</a>
                                  <a  style="margin-left: 10px;margin-right: 10px;"  class="text-center text-red"href="{% url 'all_orders'%}">Все зазказы клиента</a></p> 
                                  
                 <h1 class="text-center text-red">Shop</h1>
