@@ -30,15 +30,5 @@ class AddNewProductFormView(FormView):
         """
         Добавление продукта из формы
         """
-        form = AddProductForm(request.POST,request.FILES)
        
-        if form.is_valid():
-            product = Product.objects.create(**form)
-            product.save()
-            messages.success(request,"Продукт успешно сохранен")
-            return redirect("new_product")
-        print(form.errors)
-        messages.error(request,"Ошибка заполнения данных формы")
-        return redirect("new_product")
-
         

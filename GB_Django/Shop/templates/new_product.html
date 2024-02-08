@@ -6,23 +6,7 @@
             <h1 style="text-align: center;">Добавить продукт</h1>
             <br>
             <form action="{% url 'new_product_form' %}" method="post",enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form.as_p }}
-                <div class="mb-3">
-                  <label  class="form-label">Название продукта</label>
-                  <input type="text" class="form-control" name="name">
-                  <label  class="form-label">Фотография</label>
-                  <input type="file" class="form-control" name="image">
-                <label  class="form-label">Цена</label>
-                <input type="text" class="form-control" name="price">
-                <label  class="form-label">Количество</label>
-                <input type="text" class="form-control" name="quantity">
-                <label  class="form-label">Oпиание</label>
-                <textarea class="form-control" name="description"></textarea>
-                <br>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-                </div>
-              </form>
+            
            
         </div>
     </div>
