@@ -32,8 +32,8 @@ class AllOrdersView(ListView):
    вручную заказы (через коммандс отображаются не слишком читабельно
    тк  используется цикл заполения тестовыми данными)
    """
-   def get(self,request):
-       user = Client.objects.get(name = "Vasya")
+   def get(self,request, pk):
+       user = Client.objects.get(id = pk)
        orders_week = Order.objects.filter(client=user, order_date__gte='2024-02-01').all()
        orders_month = Order.objects.filter(client=user, order_date__gte='2024-01-08').all()
        orders_year = Order.objects.filter(client=user, order_date__gte='2023-02-08').all()
@@ -46,8 +46,8 @@ class AllProductsInOrdersView(ListView):
     Список продуктов в заказах за неделю 
     месяц и год 
     """
-    def get(self,request):
-       user = Client.objects.get(name = "Vasya")
+    def get(self,request, pk):
+       user = Client.objects.get(id = pk)
        orders_week = Order.objects.filter(client=user, order_date__gte='2024-02-01').all()
        orders_month = Order.objects.filter(client=user, order_date__gte='2024-01-08').all()
        orders_year = Order.objects.filter(client=user, order_date__gte='2023-02-08').all()
